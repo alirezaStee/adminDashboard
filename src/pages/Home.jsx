@@ -17,23 +17,33 @@ export default function Home() {
   useEffect(() => {
     const getData = async () => {
       setisLoading(true);
-
-      let { data: SalesData, error } = await supabase
-        .from("SalesData")
-        .select("*");
-
-      let { data: Piechart } = await supabase.from("Piechart").select("*");
-      setBrowserUsageData(Piechart);
-      setisLoading(false);
-      if (SalesData) {
-        setSalesData(SalesData);
-      } else {
+  
+      try {
+        let { data: SalesData, error: salesError } = await supabase
+          .from("SalesData")
+          .select("*");
+  
+        if (salesError) throw salesError;
+  
+        let { data: Piechart, error: pieError } = await supabase
+          .from("Piechart")
+          .select("*");
+  
+        if (pieError) throw pieError;
+  
+        setSalesData(SalesData || []);
+        setBrowserUsageData(Piechart || []);
+      } catch (err) {
         setIsErrorAlertShow(true);
-        setErrorMessage(error.message);
+        setErrorMessage(err.message);
+      } finally {
+        setisLoading(false);
       }
     };
+  
     getData();
   }, []);
+  
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
   return (
     <div>
