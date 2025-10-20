@@ -29,7 +29,7 @@
 
 ## Demo
 
-You can check out a live demo of the Admin Dashboard  [here](https://alirezastee1.iran.liara.run/).
+You can check out a live demo of the Admin Dashboard  [here](https://admin-dashboard-iota-azure-96.vercel.app/).
 
 ![Demo Gif](demo-gif-url.gif)
 ## Screenshot
