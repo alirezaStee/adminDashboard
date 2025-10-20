@@ -112,6 +112,7 @@ export default function CalenderPage() {
     setSelectedEvent(clickInfo.event);
   };
   const handleEventRemove = async (eventToDelete) => {
+    console.log(eventToDelete)
     setIsLoadingForDeleteModal(true);
     const { error } = await supabase
       .from("Calender1")

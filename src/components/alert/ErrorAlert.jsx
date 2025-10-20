@@ -8,7 +8,7 @@ export default function ErrorAlert({
   return (
     <>
       <div
-        className=" fixed right-0 top-2  hidden animate-pulse  text-white open:block"
+        className=" fixed right-0 top-2  hidden animate-pulse  text-white open:block z-[999999999999]"
         open={isErrorAlertShow}
       >
         <div className="order-first flex  justify-between rounded bg-red-400 px-4 py-3 text-white">
